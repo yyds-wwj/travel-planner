@@ -16,7 +16,7 @@ import queue
 import threading
 import asyncio
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, date
 from dotenv import load_dotenv
 
 import anthropic
@@ -304,6 +304,8 @@ class AgentRunner:
 
         initial_message = f"""用户需求：{user_input}
 {ip_hint}
+
+当前日期：{datetime.now().strftime('%Y年%m月%d日 %A')}。规划行程时必须以此日期为基准，使用真实日期。
 
 你是旅游攻略协调员。**重要：直接开始工作，不要向用户提问。**
 
