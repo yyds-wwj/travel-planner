@@ -1,0 +1,21 @@
+# 敏感配置
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# 运行时数据
+.mailboxes/
+.tasks/
+outputs/*
+data/*.db
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

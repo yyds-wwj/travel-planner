@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旅游攻略多智能体系统</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <h1><span class="logo">🗺️</span>旅游攻略多智能体系统</h1>
+  <span class="badge">Multi-Agent</span>
+  <div class="header-right">
+    <span id="status-text" class="status-indicator"></span>
+    <div id="status-dot" class="status-dot"></div>
+  </div>
+</header>
+
+<div id="conn-banner" class="conn-banner warn show">⏳ 连接服务器中...</div>
+
+<!-- Main -->
+<div class="main">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <button class="on" data-panel="agents">🤖 团队</button>
+      <button data-panel="history">📚 历史</button>
+    </nav>
+    <div id="agents-panel" class="sidebar-panel on">
+      <div id="agent-list" class="agent-list"></div>
+    </div>
+    <div id="history-panel" class="sidebar-panel">
+      <div id="history-list" class="history-list">
+        <div class="empty"><div class="empty-icon">📭</div><div class="empty-text">加载中...</div></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <section class="main-content">
+    <nav class="tab-bar">
+      <button class="on" data-tab="chat"><span class="tb-dot"></span>对话</button>
+      <button data-tab="tasks">📋 任务</button>
+      <button data-tab="messages">📨 通信</button>
+      <button data-tab="plan">📄 攻略</button>
+    </nav>
+
+    <div id="panel-chat" class="content-panel on">
+      <div id="chat-stream" class="chat-stream">
+        <div class="empty"><div class="empty-icon">💬</div><div class="empty-text">输入旅游需求，启动多智能体协作</div></div>
+      </div>
+    </div>
+    <div id="panel-tasks" class="content-panel">
+      <div id="task-grid" class="task-grid">
+        <div class="empty"><div class="empty-icon">📋</div><div class="empty-text">任务看板将在 Agent 启动后显示</div></div>
+      </div>
+    </div>
+    <div id="panel-messages" class="content-panel">
+      <div id="msg-stream" class="msg-stream">
+        <div class="empty"><div class="empty-icon">📨</div><div class="empty-text">Agent 间通信将在此显示</div></div>
+      </div>
+    </div>
+    <div id="panel-plan" class="content-panel">
+      <div id="plan-doc" class="plan-doc">
+        <div class="empty"><div class="empty-icon">📄</div><div class="empty-text">最终攻略将在所有专家完成后生成</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Quick Suggestions -->
+<div class="quick-bar">
+  <span class="ql">快速体验</span>
+  <span class="quick-pill" onclick="fillSuggestion('我想去杭州玩3天，预算3000元，喜欢自然风光和艺术展览，从上海出发')">杭州 3 日游</span>
+  <span class="quick-pill" onclick="fillSuggestion('我想去成都玩4天，预算4000元，喜欢美食和历史文化，从北京出发')">成都 4 日游</span>
+  <span class="quick-pill" onclick="fillSuggestion('我想去大理玩5天，预算5000元，喜欢古镇、洱海和拍照，从深圳出发')">大理 5 日游</span>
+  <span class="quick-pill" onclick="fillSuggestion('我想去西安玩3天，预算2500元，喜欢历史遗迹和博物馆，从武汉出发')">西安 3 日游</span>
+</div>
+
+<!-- Input -->
+<div class="input-bar">
+  <input id="user-input" type="text" placeholder="描述你的旅游需求，例如：我想去杭州玩3天，预算3000元..." autofocus>
+  <button id="send-btn" class="btn-primary" onclick="sendMessage()">开始规划</button>
+  <button id="stop-btn" class="btn-danger" onclick="stopAgent()" style="display:none">停止</button>
+</div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>
